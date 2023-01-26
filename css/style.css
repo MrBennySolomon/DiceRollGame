@@ -70,7 +70,7 @@ body {
 
 .dice-upper {
   width: 12vw;
-  height: 12vh;
+  height: 20vh;
   border: 2px solid white;
   margin-left: 20%;
   background: url(../img/dice-3.png) no-repeat center center/cover;
@@ -79,7 +79,7 @@ body {
 
 .dice-lower {
   width: 12vw;
-  height: 12vh;
+  height: 20vh;
   border: 2px solid white;
   margin-left: 20%;
   background: url(../img/dice-5.png) no-repeat center center/cover;
