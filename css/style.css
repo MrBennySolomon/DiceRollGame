@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgb(160, 28, 52) 30%, rgb(84, 30, 91) 70%);
+}
+
+.flex {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.player1-container {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  border: 2px solid white;
+  background: white;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.player2-container {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  border: 2px solid white;
+  background: white;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.middle-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  margin-left: -10%;
+  margin-right: -10%;
+}
+
+.btn-new-game {
+  width: 15vw;
+  height: 5vh;
+  border: 2px solid white;
+  margin-left: 11.5%;
+  border-radius: 2rem;
+  opacity: 0.6;
+}
+
+.dice-upper {
+  width: 12vw;
+  height: 12vh;
+  border: 2px solid white;
+  margin-left: 20%;
+  background: url(../img/dice-3.png) no-repeat center center/cover;
+  z-index: 1;
+}
+
+.dice-lower {
+  width: 12vw;
+  height: 12vh;
+  border: 2px solid white;
+  margin-left: 20%;
+  background: url(../img/dice-5.png) no-repeat center center/cover;
+  z-index: 1;
+}
+
+.btn-roll-dice {
+  width: 15vw;
+  height: 5vh;
+  border: 2px solid white;
+  margin-left: 11.5%;
+  border-radius: 2rem;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.btn-hold {
+  width: 15vw;
+  height: 5vh;
+  border: 2px solid white;
+  margin-left: 11.5%;
+  border-radius: 2rem;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.player1-upper {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 25vw;
+  height: 20vh;
+  border: 2px solid white;
+  align-self: center;
+  z-index: 1;
+
+}
+
+.player1-upper-header {
+  align-self: center;
+  font-size: 3rem;
+  z-index: 1;
+}
+
+.player1-upper-total-score {
+  font-size: 5rem;
+  align-self: center;
+  z-index: 1;
+}
+
+.player1-upper-total-score {
+  align-self: center;
+  z-index: 1;
+}
+
+.player1-lower {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 20vw;
+  height: 12vh;
+  border: 2px solid white;
+  align-self: center;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.player1-lower-current {
+  align-self: center;
+  z-index: 1;
+}
+
+.player1-lower-current-score {
+  align-self: center;
+  z-index: 1;
+}
+
+.player2-upper {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 25vw;
+  height: 20vh;
+  border: 2px solid white;
+  align-self: center;
+  z-index: 1;
+}
+
+
+.player2-upper-header {
+  align-self: center;
+  font-size: 3rem;
+  z-index: 1;
+}
+
+.player2-upper-total-score {
+  align-self: center;
+  font-size: 5rem;
+  z-index: 1;
+}
+
+.player2-upper-total-score {
+  align-self: center;
+  z-index: 1;
+}
+
+.player2-lower {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  width: 20vw;
+  height: 12vh;
+  border: 2px solid white;
+  align-self: center;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.player2-lower-current {
+  align-self: center;
+  z-index: 1;
+}
+
+.player2-lower-current-score {
+  align-self: center;
+  z-index: 1;
+}
