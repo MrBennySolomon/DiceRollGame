@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive" 
+  },
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
