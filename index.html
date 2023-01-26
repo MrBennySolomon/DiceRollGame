@@ -8,6 +8,26 @@
   <title>Dice Roll Game</title>
 </head>
 <body>
+  <button id="myBtn">Open Modal</button>
+<!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <h2>Game Instructions:</h2>
+      <ul class="modal-ul">
+        <li class="modal-li">In your turn - roll the dice(at least once) and accumulate the result in "current".</li>
+        <li class="modal-li">You can roll again or click "Hold" to save the points from "Current" and end the turn.</li>
+        <li class="modal-li">Note! if you get 6-6 - you will lose all points from "current" and the turn will go to your opponent.</li>
+        <li class="modal-li">If you managed to reach exactly the target score - you win! If you passed it - you loose ...</li>
+      </ul>
+      <h2>Please select a target score</h2>
+      <form action="">
+        <input type="number" id="quantity" name="quantity" min="50" max="200" value="100">
+      </form>
+      <br><br>
+      <button id="btn-start">START GAME</button>
+    </div>
+  </div>
   <div class="flex">
     <div class="player1-container">
       <div class="player1-upper">

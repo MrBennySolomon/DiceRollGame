@@ -6,9 +6,11 @@ let player2;
 let roll1;
 let roll2;
 let activeUser = 'player1';
-let target;
+let target = 100;
 let isGameOver;
 
+const player1Container = document.querySelector('.player1-container');
+const player2Container = document.querySelector('.player2-container');
 const player1UpperTotalScore = document.querySelector('.player1-upper-total-score');
 const player1LowerCurrentScore = document.querySelector('.player1-lower-current-score');
 const player2UpperTotalScore = document.querySelector('.player2-upper-total-score');
@@ -18,12 +20,13 @@ const btnRollDice = document.querySelector('.btn-roll-dice');
 const btnHold = document.querySelector('.btn-hold');
 const diceUpper = document.querySelector('.dice-upper');
 const diceLower = document.querySelector('.dice-lower');
+const userInputModal = document.querySelector('input#quantity');
+const btnStartGameModal = document.querySelector('button#btn-start');
 
 class Player {
   constructor(total, current) {
     this.total = total,
-    this.current = current,
-    this.isCurrentPlayer = isCurrentPlayer;
+    this.current = current
   }
 }
 
@@ -32,9 +35,10 @@ const rollDice = () => {
 }
 
 const startNewGame = () => {
+  diceUpper.style.background = 'white';
+  diceLower.style.background = 'white';
   activeUser = 'player1';
   isGameOver = false;
-  target = 100;
   player1 = new Player(0, 0, true);
   player2 = new Player(0, 0, false);
   player1UpperTotalScore.innerText = '0';
@@ -46,7 +50,6 @@ const startNewGame = () => {
 const print2Dice = (num1, num2) => {
   diceUpper.style.background = 'url(../img/dice-' + `${num1}.png` + ') no-repeat center center/cover';
   diceLower.style.background = 'url(../img/dice-' + `${num2}.png` + ') no-repeat center center/cover';
-  return [num1, ]
 }
 
 const updateScore = () => {
@@ -89,7 +92,15 @@ const checkWinner = () => {
 }
 
 const updateCurrentUser = () => {
-  activeUser = activeUser === 'player1' ? 'player2': 'player1';
+  if (activeUser === 'player1') {
+    activeUser = 'player2';
+    player2Container.style.opacity = '0.4';
+    player1Container.style.opacity = '0.2';
+  }else{
+    activeUser = 'player1';
+    player1Container.style.opacity = '0.4';
+    player2Container.style.opacity = '0.2';
+  }
 };
 
 const double = () => {
@@ -100,24 +111,26 @@ const double = () => {
   }
   roll1 = 0;
   roll2 = 0;
+  updateCurrentUser();
 }
 
 btnRollDice.addEventListener('click', function() {
   roll1 = rollDice();
   roll2 = rollDice();
-  if (roll1 === 6 && roll2 ===6) {
+  
+  print2Dice(roll1, roll2);
+  if (roll1 === 6 && roll2 === 6) {
     alert('Sorry ... 6 6 reset your current score and you lost your turn');
     double();
     return;
+  }else{
+    updateScore();
+    checkWinner();
   }
-  print2Dice(roll1, roll2);
-
-  updateCurrentUser();
-  updateScore();
-  checkWinner();
 });
 
 btnHold.addEventListener('click', function() {
+  checkWinner();
   if (activeUser === 'player1') {
     player1UpperTotalScore.innerText = Number(player1UpperTotalScore.innerText) + Number(player1LowerCurrentScore.innerText);
     player1LowerCurrentScore.innerText = '0';
@@ -130,4 +143,36 @@ btnHold.addEventListener('click', function() {
 
 btnNewGame.addEventListener('click', function() {
   startNewGame();
+  modal.style.display = "block";
 });
+
+btnStartGameModal.addEventListener('click', function() {
+  target = Number(userInputModal.value);
+  modal.style.display = "none";
+});
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+modal.style.display = "block";
+// When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }

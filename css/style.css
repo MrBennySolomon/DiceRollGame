@@ -31,7 +31,7 @@ body {
   height: 100%;
   border: 2px solid white;
   background: white;
-  opacity: 0.2;
+  opacity: 0.4;
   z-index: -1;
 }
 
@@ -44,7 +44,7 @@ body {
   height: 100%;
   border: 2px solid white;
   background: white;
-  opacity: 0.3;
+  opacity: 0.2;
   z-index: -1;
 }
 
@@ -63,26 +63,28 @@ body {
   width: 15vw;
   height: 5vh;
   border: 2px solid white;
-  margin-left: 11.5%;
+  margin-left: 11%;
   border-radius: 2rem;
   opacity: 0.6;
+  font-weight: bold;
 }
 
 .dice-upper {
-  width: 12vw;
-  height: 20vh;
-  border: 2px solid white;
-  margin-left: 20%;
-  background: url(../img/dice-3.png) no-repeat center center/cover;
+  width: 100px;
+  height: 100px;
+  /* border: 2px solid white; */
+  margin: 5% auto;
+  background: white;
   z-index: 1;
+  padding: 2rem 2rem;
 }
 
 .dice-lower {
-  width: 12vw;
-  height: 20vh;
-  border: 2px solid white;
-  margin-left: 20%;
-  background: url(../img/dice-5.png) no-repeat center center/cover;
+  width: 100px;
+  height: 100px;
+  /* border: 2px solid white; */
+  margin: 5% auto;
+  background: white;
   z-index: 1;
 }
 
@@ -90,20 +92,22 @@ body {
   width: 15vw;
   height: 5vh;
   border: 2px solid white;
-  margin-left: 11.5%;
+  margin-left: 11%;
   border-radius: 2rem;
   z-index: 1;
   opacity: 0.6;
+  font-weight: bold;
 }
 
 .btn-hold {
   width: 15vw;
   height: 5vh;
   border: 2px solid white;
-  margin-left: 11.5%;
+  margin-left: 11%;
   border-radius: 2rem;
   z-index: 1;
   opacity: 0.6;
+  font-weight: bold;
 }
 
 .player1-upper {
@@ -145,10 +149,13 @@ body {
   height: 12vh;
   border: 2px solid white;
   align-self: center;
-  color: black;
+  color: white;
   font-size: 1.5rem;
   border-radius: 1rem;
   z-index: 1;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: rgba(84, 30, 91, 0.8);
 }
 
 .player1-lower-current {
@@ -200,10 +207,13 @@ body {
   height: 12vh;
   border: 2px solid white;
   align-self: center;
-  color: black;
+  color: white;
   font-size: 1.5rem;
   border-radius: 1rem;
   z-index: 1;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: rgb(160, 28, 52);
 }
 
 .player2-lower-current {
@@ -214,4 +224,77 @@ body {
 .player2-lower-current-score {
   align-self: center;
   z-index: 1;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  z-index: 5;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background: linear-gradient(135deg, rgb(160, 28, 52) 30%, rgb(84, 30, 91) 70%);
+  color: white;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 10px solid #888;
+  width: 80%; 
+  min-height: 40%;
+  line-height: 1.6;/* Could be m
+  ore or less, depending on screen size */
+}
+
+h2 {
+  font-size: 3rem;
+  text-decoration: underline;
+}
+
+li {
+  font-size: 1.5rem;
+}
+
+#btn-start {
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#myBtn {
+  display: none;
+}
+
+@media screen and (max-width: 600px) and (min-width: 500px) {
+  .player2-upper-header,
+  .player1-upper-header {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .flex {
+    display: none;
+  }
 }
