@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   vertical-align: baseline;
@@ -8,8 +8,6 @@ html {
 }
 body {
   background: linear-gradient(135deg, rgb(160, 28, 52) 30%, rgb(84, 30, 91) 70%);
-  /* display: grid;
-  grid-template-columns: 1fr; */
   height: 100vh;
   overflow: hidden;
   width: 100%;
@@ -17,21 +15,15 @@ body {
   justify-content: center;
   align-items: center;
 }
-.dice {
+/* .dice {
   width: 50%;
   height: 50%;
   align-items: center;
-  /* display: grid; */
-  /* grid-gap: 5rem; */
-  /* grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); */
-  /* grid-template-rows: auto; */
-  /* justify-items: center; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 100%;
   padding: 2rem;
-  /* perspective: 600px; */
 }
 .die-list {
   display: grid;
@@ -215,4 +207,4 @@ button:hover {
 
 .none {
   display: none;
-}
+} */ */
