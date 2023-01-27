@@ -118,11 +118,11 @@ const checkWinner = () => {
 const updateCurrentUser = () => {
   if (activeUser === 'player1') {
     activeUser = 'player2';
-    player2Container.style.opacity = '0.4';
+    player2Container.style.opacity = '0.6';
     player1Container.style.opacity = '0.2';
   }else{
     activeUser = 'player1';
-    player1Container.style.opacity = '0.4';
+    player1Container.style.opacity = '0.6';
     player2Container.style.opacity = '0.2';
   }
 };
