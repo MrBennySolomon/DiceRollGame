@@ -10,9 +10,6 @@
   "version": "1.0.0",
   "description": "HTML, CSS, JS - CSS Grid and 3D transform properties. The JavaScript is a random number generator that applies CSS classes to dice to display results",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codesandbox-app/static-template.git"
