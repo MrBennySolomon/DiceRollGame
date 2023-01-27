@@ -5,7 +5,7 @@ let player1;
 let player2;
 let roll1;
 let roll2;
-let activeUser = 'player1';
+let activeUser = 'player2';
 let target = 100;
 let isGameOver;
 let player1Wins = 0;
@@ -49,6 +49,7 @@ const setLocalStorageScore = () => {
 }
 
 const startNewGame = () => {
+  updateCurrentUser();
   setLocalStorageScore();
   // diceUpper.style.background = 'white';
   // diceLower.style.background = 'white';
