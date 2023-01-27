@@ -26,6 +26,9 @@ const userInputModal = document.querySelector('input#quantity');
 const btnStartGameModal = document.querySelector('button#btn-start');
 const player1WinsScore = document.getElementById('player1-wins');
 const player2WinsScore = document.getElementById('player2-wins');
+const dice = document.getElementById('.dice');
+const flex = document.getElementById('.flex');
+
 
 class Player {
   constructor(total, current) {
@@ -47,8 +50,8 @@ const setLocalStorageScore = () => {
 
 const startNewGame = () => {
   setLocalStorageScore();
-  diceUpper.style.background = 'white';
-  diceLower.style.background = 'white';
+  // diceUpper.style.background = 'white';
+  // diceLower.style.background = 'white';
   activeUser = 'player1';
   isGameOver = false;
   player1 = new Player(0, 0, true);
@@ -60,8 +63,8 @@ const startNewGame = () => {
 }
 
 const print2Dice = (num1, num2) => {
-  diceUpper.style.background = 'url(../img/dice-' + `${num1}.png` + ') no-repeat center center/cover';
-  diceLower.style.background = 'url(../img/dice-' + `${num2}.png` + ') no-repeat center center/cover';
+  // diceUpper.style.background = 'url(../img/dice-' + `${num1}.png` + ') no-repeat center center/cover';
+  // diceLower.style.background = 'url(../img/dice-' + `${num2}.png` + ') no-repeat center center/cover';
 }
 
 const updateScore = () => {
@@ -139,8 +142,13 @@ const double = () => {
 }
 
 btnRollDice.addEventListener('click', function() {
-  roll1 = rollDice();
-  roll2 = rollDice();
+  const result = rollDiceNow();
+  roll1 = Number(result[0]);
+  roll2 = Number(result[1]);
+  // console.log('roll1', roll1);
+  // console.log('roll2', roll2);
+  // roll1 = rollDice();
+  // roll2 = rollDice();
   
   print2Dice(roll1, roll2);
   if (roll1 === 6 && roll2 === 6) {
@@ -190,3 +198,25 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 modal.style.display = "block";
+
+function rollDiceNow() {
+  const result = [];
+  const dice = [...document.querySelectorAll(".die-list")];
+  dice.forEach((die, i) => {
+    toggleClasses(die);
+    die.dataset.roll = getRandomNumber(1, 6);
+    result[i] = die.dataset.roll;
+  });
+  return result;
+}
+
+function toggleClasses(die) {
+  die.classList.toggle("odd-roll");
+  die.classList.toggle("even-roll");
+}
+
+function getRandomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
