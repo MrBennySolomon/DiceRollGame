@@ -5,7 +5,7 @@ let player1;
 let player2;
 let roll1;
 let roll2;
-let activeUser = 'player2';
+let activeUser = 'player1';
 let target = 100;
 let isGameOver;
 let player1Wins = 0;
@@ -52,8 +52,6 @@ const setLocalStorageScore = () => {
 const startNewGame = () => {
   updateCurrentUser('init');
   setLocalStorageScore();
-  // diceUpper.style.background = 'white';
-  // diceLower.style.background = 'white';
   activeUser = 'player1';
   isGameOver = false;
   player1 = new Player(0, 0, true);
@@ -64,18 +62,12 @@ const startNewGame = () => {
   player2LowerCurrentScore.innerText = '0';
 }
 
-const print2Dice = (num1, num2) => {
-  // diceUpper.style.background = 'url(../img/dice-' + `${num1}.png` + ') no-repeat center center/cover';
-  // diceLower.style.background = 'url(../img/dice-' + `${num2}.png` + ') no-repeat center center/cover';
-}
-
 const updateScore = () => {
   if(activeUser === 'player1') {
     player1LowerCurrentScore.innerText = Number(player1LowerCurrentScore.innerText) + (roll1 + roll2);
   }else{
     player2LowerCurrentScore.innerText = Number(player2LowerCurrentScore.innerText) + (roll1 + roll2);
   }
-    
 };
 
 const updateLocalStorage = (winner) => {
@@ -147,18 +139,13 @@ const double = () => {
   updateCurrentUser();
 }
 
-btnRollDice.addEventListener('click', function() {
-  audioDice.play();
-  const result = rollDiceNow();
-  roll1 = Number(result[0]);
-  roll2 = Number(result[1]);
-  // console.log('roll1', roll1);
-  // console.log('roll2', roll2);
-  // roll1 = rollDice();
-  // roll2 = rollDice();
-  
-  // print2Dice(roll1, roll2);
-  if (roll1 === 6 && roll2 === 6) {
+const checkSix = () => {
+  if (roll1 === 1 && roll2 === 1 ||
+      roll1 === 2 && roll2 === 2 ||
+      roll1 === 3 && roll2 === 3 ||
+      roll1 === 4 && roll2 === 4 ||
+      roll1 === 5 && roll2 === 5 ||
+      roll1 === 6 && roll2 === 6) {
     audioLostTurn.play();
     double();
     return;
@@ -166,6 +153,14 @@ btnRollDice.addEventListener('click', function() {
     updateScore();
     checkWinner();
   }
+}
+
+btnRollDice.addEventListener('click', function() {
+  audioDice.play();
+  const result = rollDiceNow();
+  roll1 = Number(result[0]);
+  roll2 = Number(result[1]);
+  checkSix();
 });
 
 btnHold.addEventListener('click', function() {
