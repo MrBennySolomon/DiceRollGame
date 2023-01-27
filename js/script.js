@@ -11,8 +11,8 @@ let isGameOver;
 let player1Wins = 0;
 let player2Wins = 0;
 
-const player1Container = document.querySelector('.player1-container');
-const player2Container = document.querySelector('.player2-container');
+const player1Container = document.querySelector('.player1');
+const player2Container = document.querySelector('.player2');
 const player1UpperTotalScore = document.querySelector('.player1-upper-total-score');
 const player1LowerCurrentScore = document.querySelector('.player1-lower-current-score');
 const player2UpperTotalScore = document.querySelector('.player2-upper-total-score');
@@ -189,11 +189,6 @@ const btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
 
 modal.style.display = "block";
 

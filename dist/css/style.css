@@ -26,7 +26,7 @@ body {
   justify-content: center;
   align-content: center;
 }
-.player1-container {
+.player1 {
   display: flex;
   justify-content: space-around;
   align-content: center;
@@ -40,7 +40,7 @@ body {
   z-index: -1;
 }
 
-.player2-container {
+.player2 {
   display: flex;
   justify-content: space-around;
   align-content: center;
