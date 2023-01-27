@@ -385,6 +385,6 @@ body {
     font-size: 2.5rem; } }
 
 @media screen and (max-width: 499px) {
-  .modal,
-  .flex {
+  body .modal,
+  body .flex {
     display: none; } }

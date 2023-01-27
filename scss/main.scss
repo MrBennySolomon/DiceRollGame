@@ -518,8 +518,8 @@ body {
 }
 
 @media screen and (max-width: 499px) {
-  .modal,
-  .flex {
+  body .modal,
+  body .flex {
     display: none;
   }
 }
