@@ -8,6 +8,8 @@ let roll2;
 let activeUser = 'player1';
 let target = 100;
 let isGameOver;
+let player1Wins = 0;
+let player2Wins = 0;
 
 const player1Container = document.querySelector('.player1-container');
 const player2Container = document.querySelector('.player2-container');
@@ -22,6 +24,8 @@ const diceUpper = document.querySelector('.dice-upper');
 const diceLower = document.querySelector('.dice-lower');
 const userInputModal = document.querySelector('input#quantity');
 const btnStartGameModal = document.querySelector('button#btn-start');
+const player1WinsScore = document.getElementById('player1-wins');
+const player2WinsScore = document.getElementById('player2-wins');
 
 class Player {
   constructor(total, current) {
@@ -34,7 +38,15 @@ const rollDice = () => {
   return Math.ceil(Math.random() * 6);
 }
 
+const setLocalStorageScore = () => {
+  player1Wins = localStorage.getItem('player1Wins');
+  player2Wins = localStorage.getItem('player2Wins');
+  player1WinsScore. innerText = player1Wins;
+  player2WinsScore.innerText = player2Wins;
+}
+
 const startNewGame = () => {
+  setLocalStorageScore();
   diceUpper.style.background = 'white';
   diceLower.style.background = 'white';
   activeUser = 'player1';
@@ -61,15 +73,25 @@ const updateScore = () => {
     
 };
 
+const updateLocalStorage = (winner) => {
+
+  const win = winner + 'Wins';
+  const score = Number(localStorage.getItem(win)) + 1;
+  localStorage.setItem(win, score);
+  setLocalStorageScore();
+}
+
 const checkWinner = () => {
   if (Number(player1UpperTotalScore.innerText) + Number(player1LowerCurrentScore.innerText) > target) {
     isGameOver = true;
     winner = 'player2';
+    updateLocalStorage(winner);
     alert('player2 is the winner');
     startNewGame();
   }else if (Number(player2UpperTotalScore.innerText) + Number(player2LowerCurrentScore.innerText) > target) {
     isGameOver = true;
     winner = 'player1';
+    updateLocalStorage(winner);
     alert('player1 is the winner');
     startNewGame();
   }else{
@@ -77,6 +99,7 @@ const checkWinner = () => {
       if (Number(player1UpperTotalScore.innerText) + Number(player1LowerCurrentScore.innerText) === target) {
         isGameOver = true;
         winner = 'player1';
+        updateLocalStorage(winner);
         alert('player1 is the winner');
         startNewGame();
       }
@@ -84,6 +107,7 @@ const checkWinner = () => {
       if (Number(player2UpperTotalScore.innerText) + Number(player2LowerCurrentScore.innerText) === target) {
         isGameOver = true;
         winner = 'player2';
+        updateLocalStorage(winner);
         alert('player2 is the winner');
         startNewGame();
       }
@@ -149,6 +173,7 @@ btnNewGame.addEventListener('click', function() {
 btnStartGameModal.addEventListener('click', function() {
   target = Number(userInputModal.value);
   modal.style.display = "none";
+  startNewGame();
 });
 
 // Get the modal
@@ -165,14 +190,3 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 modal.style.display = "block";
-// When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }

@@ -129,6 +129,22 @@ body {
   z-index: 1;
 }
 
+.local-storage {
+
+  border: 3px solid white;
+}
+
+.player1-wins-text,
+.player2-wins-text,
+.player2-wins,
+.player1-wins {
+  display: inline;
+  align-self: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+}
+
 .player1-upper-total-score {
   font-size: 5rem;
   align-self: center;
