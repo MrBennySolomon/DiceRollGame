@@ -203,7 +203,7 @@ body {
 
         &-header {
           align-self: center;
-          font-size: 3rem;
+          font-size: 2.5rem;
           z-index: 1;
         }
       }
@@ -502,18 +502,11 @@ body {
 
         &-header {
           align-self: center;
-          font-size: 3rem;
+          font-size: 2.5rem;
           z-index: 1;
         }
       }
     }
-  }
-}
-
-@media screen and (max-width: 600px) and (min-width: 500px) {
-  .player2-upper-header,
-  .player1-upper-header {
-    font-size: 2.5rem;
   }
 }
 
