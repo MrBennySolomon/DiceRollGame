@@ -140,12 +140,7 @@ const double = () => {
 }
 
 const checkSix = () => {
-  if (roll1 === 1 && roll2 === 1 ||
-      roll1 === 2 && roll2 === 2 ||
-      roll1 === 3 && roll2 === 3 ||
-      roll1 === 4 && roll2 === 4 ||
-      roll1 === 5 && roll2 === 5 ||
-      roll1 === 6 && roll2 === 6) {
+  if (roll1 === 6 && roll2 === 6) {
     audioLostTurn.play();
     double();
     return;
@@ -187,18 +182,19 @@ btnStartGameModal.addEventListener('click', function() {
 });
 
 // Get the modal
-var modal = document.getElementById("myModal");
+const modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+const btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
+
 modal.style.display = "block";
 
 function rollDiceNow() {
