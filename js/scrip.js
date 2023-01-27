@@ -28,7 +28,8 @@ const player1WinsScore = document.getElementById('player1-wins');
 const player2WinsScore = document.getElementById('player2-wins');
 const dice = document.getElementById('.dice');
 const flex = document.getElementById('.flex');
-
+const audioDice = new Audio('../mp3/dice-sound.mp3');
+const audioLostTurn = new Audio('../mp3/lost-turn-sound.mp3');
 
 class Player {
   constructor(total, current) {
@@ -49,7 +50,7 @@ const setLocalStorageScore = () => {
 }
 
 const startNewGame = () => {
-  updateCurrentUser();
+  updateCurrentUser('init');
   setLocalStorageScore();
   // diceUpper.style.background = 'white';
   // diceLower.style.background = 'white';
@@ -119,8 +120,12 @@ const checkWinner = () => {
   }
 }
 
-const updateCurrentUser = () => {
-  if (activeUser === 'player1') {
+const updateCurrentUser = (init) => {
+  if (init === 'init') {
+    activeUser = 'player1';
+    player1Container.style.opacity = '0.6';
+    player2Container.style.opacity = '0.2';
+  }else if (activeUser === 'player1') {
     activeUser = 'player2';
     player2Container.style.opacity = '0.6';
     player1Container.style.opacity = '0.2';
@@ -143,6 +148,7 @@ const double = () => {
 }
 
 btnRollDice.addEventListener('click', function() {
+  audioDice.play();
   const result = rollDiceNow();
   roll1 = Number(result[0]);
   roll2 = Number(result[1]);
@@ -151,9 +157,9 @@ btnRollDice.addEventListener('click', function() {
   // roll1 = rollDice();
   // roll2 = rollDice();
   
-  print2Dice(roll1, roll2);
+  // print2Dice(roll1, roll2);
   if (roll1 === 6 && roll2 === 6) {
-    alert('Sorry ... 6 6 reset your current score and you lost your turn');
+    audioLostTurn.play();
     double();
     return;
   }else{
