@@ -265,7 +265,7 @@ body {
   padding: 20px;
   border: 10px solid #888;
   width: 80%; 
-  min-height: 40%;
+  min-height: 80%;
   line-height: 1.6;/* Could be m
   ore or less, depending on screen size */
 }
