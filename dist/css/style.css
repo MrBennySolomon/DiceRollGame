@@ -325,13 +325,13 @@ li {
     #ff0000
   );
   position: absolute;
-  top: -2px;
-  left: -2px;
+  top: -4px;
+  left: -4px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
   animation: glowingbn5 20s linear infinite;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
