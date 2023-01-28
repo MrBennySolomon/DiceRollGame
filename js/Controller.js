@@ -12,17 +12,24 @@ class Controller {
     this.audioDice     = new Audio('../mp3/dice-sound.mp3');
     this.activeUser    = this.player1.getName();
     this.audioLostTurn = new Audio('../mp3/lost-turn-sound.mp3');
+    this.winSound      = new Audio('../mp3/win-sound.mp3');
+    this.btnRollDice   = document.querySelector('.btn-roll-dice');
+    this.btnHold       = document.querySelector('.btn-hold');
   }
 
   startGameModal() {
     this.target = this.view.getUserInputModal();
     this.view.setModal('none');
+    this.view.setPyroOff();
     this.startNewGame();
   }
 
   newGame() {
     this.startNewGame();
     this.view.setModal('block');
+    this.view.setPyroOff();
+    this.btnRollDice.disabled = false;
+    this.btnHold.disabled = false;
   }
 
   hold() {
@@ -93,8 +100,10 @@ class Controller {
         this.winner = 'player2';
     }
 
+    this.view.setPyroOn();
+    this.winSound.play();
     this.model.updateLocalStorage(this.winner);
-    this.view.setMessage(`${this.winner} is the winner`);
+    this.view.setMessage(this.winner);
     this.startNewGame();
   }
 };

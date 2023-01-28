@@ -8,20 +8,17 @@ this.btnStartGameModal        = document.querySelector('button#btn-start');
 const model = new Model();
 const view = new View();
 const controller = new Controller(view, model);
-controller.startNewGame();
+controller.newGame();
 
 btnRollDice.addEventListener('click', function() {
   controller.rollDice();
 });
-
 btnHold.addEventListener('click', function() {
   controller.hold();
 });
-
 btnNewGame.addEventListener('click', function() {
   controller.newGame();
 });
-
 btnStartGameModal.addEventListener('click', function() {
   controller.startGameModal();
 });

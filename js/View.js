@@ -2,6 +2,10 @@
 
 class View {
   constructor() {
+    this.winnerText               = document.querySelector('.btn-winner');
+    this.btnRollDice              = document.querySelector('.btn-roll-dice');
+    this.btnHold                  = document.querySelector('.btn-hold');
+    this.pyro                     = document.getElementById('pyro');
     this.dice                     = document.getElementById('.dice');
     this.flex                     = document.getElementById('.flex');
     this.modal                    = document.getElementById("myModal");
@@ -14,7 +18,8 @@ class View {
     this.player2UpperTotalScore   = document.querySelector('.player2-upper-total-score');
     this.player1LowerCurrentScore = document.querySelector('.player1-lower-current-score');
     this.player2LowerCurrentScore = document.querySelector('.player2-lower-current-score');
-    
+    this.pyro.classList.add('pyro');
+
   }
 
   setPlayersWins(score1, score2) {
@@ -26,12 +31,25 @@ class View {
     return Number(this.userInputModal.value);
   }
   
+  setPyroOff() {
+    this.winnerText.innerText = 'WINNER:';
+    this.pyro.classList.add('none');
+  }
+
+  setPyroOn() {
+    this.pyro.classList.remove('none');
+  }
+
   setMessage(msg) {
-    alert(msg);
+
+    this.btnRollDice.disabled = true;
+    this.btnHold.disabled = true;
+    this.winnerText.innerText = 'WINNER: ' + msg.toUpperCase();
   }
   //@PARAM: 'block' or 'hidden'
   setModal(block) {
     this.modal.style.display = block;
+    this.pyro.setAttribute('class', 'pyro none');
   }
 
   getPlayer1TotalScore() {
