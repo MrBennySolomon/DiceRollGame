@@ -1,9 +1,9 @@
 'use strict';
 
-this.btnHold                  = document.querySelector('.btn-hold');
-this.btnNewGame               = document.querySelector('.btn-new-game');
-this.btnRollDice              = document.querySelector('.btn-roll-dice');
-this.btnStartGameModal        = document.querySelector('button#btn-start');
+this.btnHold           = document.querySelector('.btn-hold');
+this.btnNewGame        = document.querySelector('.btn-new-game');
+this.btnRollDice       = document.querySelector('.btn-roll-dice');
+this.btnStartGameModal = document.querySelector('button#btn-start');
 
 const model = new Model();
 const view = new View();
