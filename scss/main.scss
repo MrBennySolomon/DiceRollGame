@@ -13,6 +13,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(135deg, rgb(160, 28, 52) 30%, rgb(84, 30, 91) 70%);
+
   .bn5 {
     padding: 0.6em 2em;
     border: none;
@@ -88,6 +89,7 @@ body {
       border-radius: 10px;
     }
   }
+  
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -540,6 +542,7 @@ $box-shadow2: ();
                hsl(random(360), 100, 50);
   $box-shadow2: $box-shadow2, 0 0 #fff
 }
+
 @mixin keyframes ($animationName) {
     @-webkit-keyframes #{$animationName} {
         @content;
@@ -593,13 +596,6 @@ $box-shadow2: ();
     -o-transform: $settings;
     -ms-transform: $settings;
 }
-
-// body {
-//   margin:0;
-//   padding:0;
-//   background: #000;
-//   overflow: hidden;
-// }
 
 .pyro > .before, .pyro > .after {
   position: absolute;

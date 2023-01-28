@@ -18,7 +18,7 @@ class Controller {
   }
 
   startGameModal() {
-    this.target = this.view.getUserInputModal();
+    this.target = Number(this.view.getUserInputModal());
     this.view.setModal('none');
     this.view.setPyroOff();
     this.startNewGame();
@@ -33,17 +33,23 @@ class Controller {
   }
 
   hold() {
-    this.checkWinner();
     this.view.setTotalScore(this.activeUser, Number(this.dice.getRoll1()) + Number(this.dice.getRoll2()));
-    this.view.setCurrentScore(this.activeUser);
+    this.view.setCurrentScore('init');
     this.changeCurrentUser(this.activeUser);
-    this.view.setOpacity(this.activeUser);
   }
 
   rollDice() {
     this.audioDice.play();
     this.dice.rollDiceNow();
-    this.checkSix();
+    this.btnRollDice.disabled = true;
+    this.btnHold.disabled = true;
+    setTimeout(() => {
+      this.btnRollDice.disabled = false;
+      this.btnHold.disabled = false;
+      this.checkSix();
+    }, 1000);
+    
+    
   }
 
   startNewGame() {
@@ -78,7 +84,9 @@ class Controller {
   }
 
   changeCurrentUser(player) {
+    console.log('active user before', this.activeUser);
     this.activeUser = this.activeUser === 'player1' ? 'player2' : 'player1';
+    console.log('active user after', this.activeUser);
     this.view.setOpacity(this.activeUser);
   }
 
@@ -86,6 +94,10 @@ class Controller {
     const total1 = this.view.getPlayer1TotalScore() + this.view.getPlayer1CurrentScore();
     const total2 = this.view.getPlayer2TotalScore() + this.view.getPlayer2CurrentScore();
     
+    console.log('total player 1', total1);
+    console.log('total player 2', total2);
+    console.log('target', this.target);
+
     if(this.target > total1 && this.target > total2) {
       return;
     }else if (total1 >= this.target) {

@@ -19,7 +19,6 @@ class View {
     this.player1LowerCurrentScore = document.querySelector('.player1-lower-current-score');
     this.player2LowerCurrentScore = document.querySelector('.player2-lower-current-score');
     this.pyro.classList.add('pyro');
-
   }
 
   setPlayersWins(score1, score2) {
