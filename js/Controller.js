@@ -54,13 +54,7 @@ class Controller {
   }
 
   checkSix() {
-    if (Number(this.dice.getRoll1()) === 6 && Number(this.dice.getRoll2()) === 6 ||
-        Number(this.dice.getRoll1()) === 5 && Number(this.dice.getRoll2()) === 5 || 
-        Number(this.dice.getRoll1()) === 4 && Number(this.dice.getRoll2()) === 4 ||
-        Number(this.dice.getRoll1()) === 3 && Number(this.dice.getRoll2()) === 3 ||
-        Number(this.dice.getRoll1()) === 2 && Number(this.dice.getRoll2()) === 2 || 
-        Number(this.dice.getRoll1()) === 1 && Number(this.dice.getRoll2()) === 1) {
-
+    if (Number(this.dice.getRoll1()) === 6 && Number(this.dice.getRoll2()) === 6) {
       this.audioLostTurn.play();
       this.view.setCurrentScore('init');
       this.changeCurrentUser(this.activeUser);
