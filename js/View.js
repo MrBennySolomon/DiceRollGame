@@ -5,9 +5,6 @@ class View {
     this.dice                     = document.getElementById('.dice');
     this.flex                     = document.getElementById('.flex');
     this.modal                    = document.getElementById("myModal");
-    this.btnHold                  = document.querySelector('.btn-hold');
-    this.btnNewGame               = document.querySelector('.btn-new-game');
-    this.btnRollDice              = document.querySelector('.btn-roll-dice');
     this.userInputModal           = document.querySelector('input#quantity');
     this.player1Container         = document.querySelector('.player1');
     this.player2Container         = document.querySelector('.player2');
@@ -20,17 +17,21 @@ class View {
     
   }
 
+  setPlayersWins(score1, score2) {
+    this.player1WinsScore.innerText = score1;
+    this.player2WinsScore.innerText = score2;
+  }
+
+  getUserInputModal() {
+    return Number(this.userInputModal.value);
+  }
+  
   setMessage(msg) {
     alert(msg);
   }
   //@PARAM: 'block' or 'hidden'
   setModal(block) {
     this.modal.style.display = block;
-  }
-
-  changeOpacity = (player1Container, player2Container) => {
-    this.player1Container.style.opacity = '0.6';
-    this.player2Container.style.opacity = '0.2';
   }
 
   getPlayer1TotalScore() {
@@ -64,26 +65,39 @@ class View {
     }
   }
 
-  setTotalScore(player, score='0') {
+  initScores() {
+    this.setTotalScore('init');
+    this.setCurrentScore('init');
+  }
+
+  setTotalScore(player) {
     switch(player) {
       case 'player1':
-        this.player1UpperTotalScore.innerText   = score;
+        this.player1UpperTotalScore.innerText = Number(this.player1UpperTotalScore.innerText) + Number(this.player1LowerCurrentScore.innerText);
         break;
       case 'player2':
-        this.player2UpperTotalScore.innerText   = score;
+        this.player2UpperTotalScore.innerText = Number(this.player2UpperTotalScore.innerText) + Number(this.player2LowerCurrentScore.innerText);
+        break;
+      case 'init':
+        this.player1UpperTotalScore.innerText   = '0';
+        this.player2UpperTotalScore.innerText   = '0';
         break;
       default:
         throw new Error('wrong input');
     }
   }
 
-  setCurrentScore(player, score='0') {
+  setCurrentScore(player, score = 0) {
     switch(player) {
       case 'player1':
-        this.player1LowerCurrentScore.innerText = Number(this.player1LowerCurrentScore.innerText) + score;
+        this.player1LowerCurrentScore.innerText = Number(this.player1LowerCurrentScore.innerText) + Number(score);
         break;
       case 'player2':
-        this.player2LowerCurrentScore.innerText = Number(this.player2LowerCurrentScore.innerText) + score;
+        this.player2LowerCurrentScore.innerText = Number(this.player2LowerCurrentScore.innerText) + Number(score);
+        break;
+      case 'init':
+        this.player1LowerCurrentScore.innerText = '0';
+        this.player2LowerCurrentScore.innerText = '0';
         break;
       default:
         throw new Error('wrong input');

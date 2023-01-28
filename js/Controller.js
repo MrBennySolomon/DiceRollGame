@@ -14,32 +14,59 @@ class Controller {
     this.audioLostTurn = new Audio('../mp3/lost-turn-sound.mp3');
   }
 
+  startGameModal() {
+    this.target = this.view.getUserInputModal();
+    this.view.setModal('none');
+    this.startNewGame();
+  }
+
+  newGame() {
+    this.startNewGame();
+    this.view.setModal('block');
+  }
+
+  hold() {
+    this.checkWinner();
+    this.view.setTotalScore(this.activeUser, Number(this.dice.getRoll1()) + Number(this.dice.getRoll2()));
+    this.view.setCurrentScore(this.activeUser);
+    this.changeCurrentUser(this.activeUser);
+    this.view.setOpacity(this.activeUser);
+  }
+
+  rollDice() {
+    this.audioDice.play();
+    this.dice.rollDiceNow();
+    this.checkSix();
+  }
+
   startNewGame() {
-    this.activeUser = player1;
-    this.view.setScore(this.activeUser, 1, 1);
-    this.model.setLocalStorageScore();
-    this.view.setTotalScore(this.player1.getName());
-    this.view.setCurrentScore(this.player2.getName());
+    this.activeUser = this.player1.getName();
+    this.view.setOpacity(this.activeUser);
+    this.view.initScores();
+    this.view.setPlayersWins(this.model.getPlayer1Wins(), this.model.getPlayer2Wins());
   }
 
   double() {
     this.dice.setRoll1(0);
     this.dice.setRoll2(0);
-    this.view.setScore(this.activeUser,
-                       this.dice.getRoll1(),
-                       this.dice.getRoll2());
-    this.view.setOpacity(this.activeUser);
+    this.view.setCurrentScore(this.activeUser);
+    this.changeCurrentUser(this.activeUser);
   }
 
   checkSix() {
-    if (this.dice.getRoll1() === 6 && this.dice.getRoll2() === 6) {
+    if (Number(this.dice.getRoll1()) === 6 && Number(this.dice.getRoll2()) === 6 ||
+        Number(this.dice.getRoll1()) === 5 && Number(this.dice.getRoll2()) === 5 || 
+        Number(this.dice.getRoll1()) === 4 && Number(this.dice.getRoll2()) === 4 ||
+        Number(this.dice.getRoll1()) === 3 && Number(this.dice.getRoll2()) === 3 ||
+        Number(this.dice.getRoll1()) === 2 && Number(this.dice.getRoll2()) === 2 || 
+        Number(this.dice.getRoll1()) === 1 && Number(this.dice.getRoll2()) === 1) {
+
       this.audioLostTurn.play();
-      this.double();
+      this.view.setCurrentScore('init');
+      this.changeCurrentUser(this.activeUser);
       return;
     }else{
-      this.view.setScore(this.activeUser,
-                         this.dice.getRoll1(),
-                         this.dice.getRoll2());
+      this.view.setCurrentScore(this.activeUser, Number(this.dice.getRoll1()) + Number(this.dice.getRoll2()));
       this.checkWinner();
     }
   }
@@ -49,51 +76,31 @@ class Controller {
     this.view.setOpacity(this.activeUser);
   }
 
+  changeCurrentUser(player) {
+    this.activeUser = this.activeUser === 'player1' ? 'player2' : 'player1';
+    this.view.setOpacity(this.activeUser);
+  }
+
   checkWinner() {
     const total1 = this.view.getPlayer1TotalScore() + this.view.getPlayer1CurrentScore();
     const total2 = this.view.getPlayer2TotalScore() + this.view.getPlayer2CurrentScore();
     
-    if (total1 >= this.target) {
+    if(this.target > total1 && this.target > total2) {
+      return;
+    }else if (total1 >= this.target) {
       if (total1 > this.target) {
         this.winner = 'player2';
       }else{
         this.winner = 'player1';
       }
-    }else{
-      if (total2 > this.target) {
+    }else if (total2 >= this.target) {
         this.winner = 'player1';
       }else{
         this.winner = 'player2';
-      }
     }
-  
-    this.model.updateLocalStorage(winner);
+
+    this.model.updateLocalStorage(this.winner);
     this.view.setMessage(`${this.winner} is the winner`);
     this.startNewGame();
   }
 };
-
-btnRollDice.addEventListener('click', function() {
-  audioDice.play();
-  const result = rollDiceNow();
-  roll1 = Number(result[0]);
-  roll2 = Number(result[1]);
-  checkSix();
-});
-
-btnHold.addEventListener('click', function() {
-  checkWinner();
-  model.updateScore(player, roll1, roll2);
-  updateCurrentUser();
-});
-
-btnNewGame.addEventListener('click', function() {
-  startNewGame();
-  modal.style.display = "block";
-});
-
-btnStartGameModal.addEventListener('click', function() {
-  target = Number(userInputModal.value);
-  modal.style.display = "none";
-  startNewGame();
-});

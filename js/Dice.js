@@ -27,10 +27,11 @@ class Dice{
     const dice = [...document.querySelectorAll(".die-list")];
     dice.forEach((die, i) => {
       view.toggleClasses(die);
-      die.dataset.roll = getRandomNumber(1, 6);
+      die.dataset.roll = this.getRandomNumber(1, 6);
       result[i] = die.dataset.roll;
     });
-    return result;
+    this.roll1 = result[0];
+    this.roll2 = result[1];
   }
 
   getRandomNumber(min, max) {
