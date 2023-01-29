@@ -1,6 +1,5 @@
 # DiceRollGame
-the game was implemented with MVC design pattern,
-using html, scss, javascript.
+the game was implemented with MVC design pattern, using html, scss, javascript.
 live demo at: https://dice-roll-game-assignment.netlify.app/
 
 Rules
