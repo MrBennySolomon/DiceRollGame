@@ -12,7 +12,10 @@ score to change the predefined score of 100.Players can create a new game whenev
 
 Extra features
 --------------
-1. Adding how many times the player has won the game
+1. Adding how many times the player has won the game.
 2. Adding local storage so our data will be persistent.
 3. if you get 6 and 6 hold your event listeners for 1 second and display a message that you got 6 and 6.
-4. Adding sound effects.
+4. Adding sound effects when player wins and when 6-6 lose turn.
+5. Adding confetti when player wins.
+6. 3D dice.
+7. Glow buttons.
